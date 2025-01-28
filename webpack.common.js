@@ -1,5 +1,3 @@
-let data = require('./src/data.json');
-
 // webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
