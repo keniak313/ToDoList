@@ -2,19 +2,26 @@ import { compareAsc, compareDesc, format, toDate, parse } from "date-fns";
 import { tasks } from "./task";
 
 export const content = document.createElement("content");
-export const header = document.createElement("header");
-export const footer = document.createElement("footer");
+
+export const taskList = document.createElement("div");
+taskList.classList.add("taskList");
+const sideMenu = document.createElement("div");
+sideMenu.classList.add("sideMenu");
 
 export const addTaskBtn = document.createElement("button");
 addTaskBtn.classList.add("newTaskBtn");
 addTaskBtn.textContent = "Add";
 
-header.appendChild(addTaskBtn);
+//DOM Hierarchy
 
+sideMenu.appendChild(addTaskBtn);
 
-document.body.appendChild(header);
+content.appendChild(sideMenu);
+content.appendChild(taskList);
 document.body.appendChild(content);
-document.body.appendChild(footer);
+
+
+//Functions
 
 function createTaskCard(title, desc, date, prio, id, task){
     const taskCard = document.createElement("div");
@@ -57,7 +64,7 @@ function createTaskCard(title, desc, date, prio, id, task){
     taskCard.appendChild(taskDate);
     taskCard.appendChild(editTaskBtn);
     taskCard.appendChild(removeTaskBtn);
-    content.appendChild(taskCard);
+    taskList.appendChild(taskCard);
 };
 
 function removeAllChildNodes(parent){
@@ -67,7 +74,7 @@ function removeAllChildNodes(parent){
 }
 
 export function populateTaskList(arr = []){
-    removeAllChildNodes(content);
+    removeAllChildNodes(taskList);
     arr.forEach((i) => {
         createTaskCard(i.title, i.description, i.dueDate, i.priority, arr.indexOf(i), i);
     })

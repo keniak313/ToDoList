@@ -2,8 +2,13 @@ import "./styles.css"
 import { compareAsc, compareDesc, format, toDate, parse } from "date-fns";
 import { dialog, submitTaskBtn } from "./dialog";
 import { tasks, Task } from "./task";
-import { addTaskBtn, content, populateTaskList } from "./ui";
+import { addTaskBtn, content, taskList, populateTaskList } from "./DOM";
 
+new Task("Swim", "Desc", "2025-03-18T02:04", "1");
+new Task("Walk", "Desc", "2025-01-11T02:04", "3");
+new Task("Ride", "Desc", "2025-01-10T02:04", "2");
+new Task("Drive", "Desc", "2025-02-12T02:04", "1");
+new Task("Run", "Short running seassion", "2025-01-06T02:04", "3");
 new Task("Swim", "Desc", "2025-03-18T02:04", "1");
 new Task("Walk", "Desc", "2025-01-11T02:04", "3");
 new Task("Ride", "Desc", "2025-01-10T02:04", "2");
@@ -51,9 +56,17 @@ function inputEventHandler(){
     removeTaskButtons.forEach((b) => {
         b.addEventListener("click", (e) => {
             tasks.splice(e.target.parentNode.dataset.obj, 1)
-            content.removeChild(e.target.parentNode);
+            taskList.removeChild(e.target.parentNode);
             console.log(e.target.parentNode.dataset.obj);
             console.log(tasks);
+        })
+    });
+
+    //Edit Task
+    const editTaskButtons = document.querySelectorAll(".editTaskBtn");
+    editTaskButtons.forEach((b) => {
+        b.addEventListener("click", (e) => {
+            dialog.showModal();
         })
     });
 };

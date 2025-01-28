@@ -24,6 +24,15 @@ createInputs("duedate", "datetime-local", "Due Date: ");
 createSelectList("priority", "Priority: ");
 createSubmitButton();
 
+class Dialog{
+    constructor(title, description){
+        this.title = title;
+        this.description = description;
+    };
+
+    
+}
+
 //Functions below
 
 function createInputBox(){
@@ -88,4 +97,8 @@ function createSubmitButton(){
     submitTaskBtn.textContent = "Create";
     submitTaskBtn.setAttribute("form", form.id);
     dialogBox.appendChild(submitTaskBtn);
+};
+
+function updateDialogInputs(){
+
 };
