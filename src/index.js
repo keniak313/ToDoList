@@ -18,18 +18,18 @@ export let tasks = [];
 
 
 new Task("Dzis", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "2025-01-31T02:04", "1", false);
-new Task("Wczoraj", "Desc", "2025-01-30T02:04", "3", false, "Some Project");
-new Task("Jutro", "Desc", "2025-02-01T02:04", "2");
-new Task("Drive", "Desc", "2025-02-12T02:04", "1");
-new Task("Run", "Short running seassion", "2025-01-06T02:04", "3", false, "Some Project");
-new Task("Swim", "Desc", "2025-03-18T02:04", "1");
-new Task("Walk", "Desc", "2025-01-11T02:04", "3", false, "Another example project");
-new Task("Ride", "Desc", "2025-01-10T02:04", "2", false, "Some Project");
-new Task("Drive", "Desc", "2025-02-12T02:04", "1");
-new Task("Run", "Short running seassion", "2025-01-06T02:04", "3");
+// new Task("Wczoraj", "Desc", "2025-01-30T02:04", "3", false, "Some Project");
+// new Task("Jutro", "Desc", "2025-02-01T02:04", "2");
+// new Task("Drive", "Desc", "2025-02-12T02:04", "1");
+// new Task("Run", "Short running seassion", "2025-01-06T02:04", "3", false, "Some Project");
+// new Task("Swim", "Desc", "2025-03-18T02:04", "1");
+// new Task("Walk", "Desc", "2025-01-11T02:04", "3", false, "Another example project");
+// new Task("Ride", "Desc", "2025-01-10T02:04", "2", false, "Some Project");
+// new Task("Drive", "Desc", "2025-02-12T02:04", "1");
+// new Task("Run", "Short running seassion", "2025-01-06T02:04", "3");
 
 new Project("Some Project", "Jakis Opis");
-new Project("Another example project", "Inny chyba Opis cos cos cos, troche dluzszy i wiekszy, a i moze cos cos");
+// new Project("Another example project", "Inny chyba Opis cos cos cos, troche dluzszy i wiekszy, a i moze cos cos");
 
 
 //Functions
@@ -173,9 +173,6 @@ export function removeAllChildNodes(parent){
 
 };
 
-// updateSorting();
-// populateProjectList(projects);
-
 export function updateStorage(type){
     if (type === "projects"){
         localStorage.setItem("projects", JSON.stringify(projects));
@@ -219,5 +216,7 @@ export function checkStorage(){
 }
 
 //Init
-inputEventHandler();
 checkStorage();
+updateSorting();
+populateProjectList(projects)
+inputEventHandler();
