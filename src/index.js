@@ -8,6 +8,7 @@ import { Project } from "./project.js";
 import { populateProjectList } from "./projectlist.js";
 import { dialogFunc} from "./dialog.js";
 
+document.body.style.display = 'flex';
 
 const sortOptions = ["prioDesc", "prioAsc", "dateAsc", "dateDesc"]
 let curSorting = sortOptions[0];
