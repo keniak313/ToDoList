@@ -1,0 +1,95 @@
+.projectsTitle{
+    padding-top: 1.5rem;
+    padding-bottom: 0.2rem;
+    font-weight: 100;
+    font-size: 1.4rem;
+
+}
+
+#filter{
+    font-size: 1rem;
+    transition: 0.2s allow-discrete;
+}
+
+#filter.active{
+    color: var(--color-black);
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+#filter:hover{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.projectCard:hover > .projectText > .projectTitle{
+    font-size: 1.4rem !important;
+}
+
+
+.projectCard{
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    grid-template-rows: 1fr;
+    cursor: pointer;
+}
+
+.projectText{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    grid-column: 1 / 2;
+}
+
+.projectButtons{
+    grid-column: 2 / 3;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    padding: 0;
+    flex: 1;    
+}
+
+.projectTitle{
+    font-size: inherit;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    width: 10ch;
+}
+
+.projectDesc{
+    color: var(--color-dark-gray);
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+
+
+
+
+
+/* .projectDesc{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    font-size: 0.8rem;
+    transition: 0.5s;
+    color: var(--color-dark-gray);
+}
+
+.projectCard:hover{
+    .taskDesc{
+        font-size: 1.2rem;
+        padding-bottom: 10px;
+    };
+}
+
+.projectCard:hover{
+    grid-template-rows: 40px 1fr 30px;
+} */

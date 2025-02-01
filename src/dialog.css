@@ -1,0 +1,147 @@
+
+dialog{
+    padding: 0;
+    border: 0;
+    margin: auto;
+    border-style: none;
+    font-size: 1.4rem;
+    background-color: transparent;
+    width: 450px;
+}
+
+.dialogBox{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 5fr;
+    border-radius: 20px;
+}
+
+.dialogContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.tabLeft, .tabRight, .dialogContent{
+    background-color: white;
+    padding: 1rem;
+}
+
+.tabLeft, .tabRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(230, 230, 230);
+}
+
+.tabLeft{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    border-top-left-radius: 1rem;
+}
+
+.tabRight{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    border-top-right-radius: 1rem;
+    
+}
+
+.tabActive{
+    background-color: white;
+}
+
+.tabEdit{
+    grid-column: 1 / 3;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+
+.tabHidden{
+    display: none;
+}
+
+.prioBox{
+    display: flex;
+    gap: 0.4rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+dialog::backdrop{
+    background-color: rgba(37, 39, 39, 0.5);
+}
+
+label{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0.2rem;
+    border-radius: 0.2rem;
+}
+
+input[type="radio"]{
+    appearance: none;
+    position: absolute;
+}
+
+input:checked + label{
+    color: var(--color-white);
+}
+
+label.priorityLow{
+    border-color: var(--color-green);
+}
+
+input:checked + label.priorityLow{
+    background-color: var(--color-green);
+}
+
+label.priorityMid{
+    border-color: var(--color-orange);
+}
+
+input:checked + label.priorityMid{
+    background-color: var(--color-orange);
+}
+
+label.priorityHigh{
+    border-color: var(--color-red);
+}
+
+input:checked + label.priorityHigh{
+    background-color: var(--color-red);
+}
+
+input{
+    width: 100%;
+    border-style: none;
+}
+
+input[type="text"]{
+    box-shadow: black 0px 2px;
+}
+
+input[type="datetime-local"]{
+    background-color: rgb(235, 235, 235);
+}
+
+textarea{
+    display: flex;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+    flex: 1;
+}

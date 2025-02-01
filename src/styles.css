@@ -1,10 +1,30 @@
 @import url(/node_modules/modern-normalize/modern-normalize.css);
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&display=swap');
+@import url(dialog.css);
+@import url(tasklist.css);
+@import url(sidemenu.css);
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Smooch sans", system-ui, sans-serif;
+    font-size: 1.2rem;
+}
+
+:root{
+    --color-red: rgb(223, 79, 79);
+    --color-green: rgb(116, 204, 75);
+    --color-orange: rgb(238, 186, 45);
+    --color-black: rgb(70, 70, 70);
+    --color-white: white;
+    --color-gray: rgb(238, 238, 238);
+    --color-dark-gray: rgb(146, 146, 146);
+    --color-bg: rgba(221, 221, 221, 0.973);
+    --color-accent:rgb(19, 185, 226);
+    --color-accent-light:rgb(192, 227, 236);
+    --color-icon:rgb(209, 209, 209);
+    --color-icon-hover:gray;
 }
 
 body{
@@ -14,25 +34,21 @@ body{
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background-color: rgb(185, 185, 185);
+    background-color: var(--color-bg);
     gap: 20px;
 }
 
-header, footer{
-    display: flex;
-    background-color: white;
-    height: 60px;
-    width: 100vw;
-    grid-column: 1 / 4;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.hidden{
+    display: none;
 }
 
 content{
-    display: flex;
-    background-color: rgb(224, 224, 224);
-    width: min(800px, 100vw);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 2rem 1rem 1rem 1fr;
+    background-color: var(--color-white);
+    width: min(1000px, 95vw);
+    /* width: 95vw; */
     max-height: min(600px, 100vh);
     border-radius: 20px;
     flex: 1;
@@ -41,19 +57,21 @@ content{
 }
 
 .sideMenu{
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    background-color: white;
+    background-color: var(--color-gray);
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
     padding: 1rem;
 }
 
 .taskList{
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
     display: flex;
     flex-direction: column;
-    flex: 3;
     width: 100%;
     overflow: auto;
     gap: 0.5rem;
@@ -62,42 +80,94 @@ content{
     padding: 1rem;
 }
 
-dialog{
-    padding: 0;
-    border: 0;
-    margin: auto;
-    background-color: white;
+.sortNav{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.activeProject{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.activeDesc{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+#sort{
+    background-color: transparent;
+}
+
+.sortActive, .sortActive > *{
+    color:var(--color-black) !important;
+    font-weight: 600;
+}
+
+button#sort, button#sort > i{
+    color: var(--color-icon);
+    font-size: 0.8rem;
+}
+
+button{
+    background-color: var(--color-accent);
+    border-radius: 4px;
+    padding: 2px;
     border-style: none;
+    cursor: pointer;
 }
 
-.dialogBox{
+button.openDialogBtn{
     display: flex;
-    flex-direction: column;
-    
-    height: 300px;
-    width: 500px;
-    padding: 20px;
+    gap: 0.2rem;
+    align-items: center;
+    padding: 0.2rem;
+    margin-bottom: 20px;
+    transition: 0.2s allow-discrete;
 }
 
-dialog::backdrop{
-    background-color: rgba(37, 39, 39, 0.5);
+button.openDialogBtn, button.openDialogBtn > *{
+    color: var(--color-accent);
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: transparent;
 }
 
-.taskCard{
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
-    background-color: white;
+button.openDialogBtn:hover{
+    background-color: var(--color-accent-light);
 }
 
-.prioHigh{
-    background-color: red;
+button.openDialogBtn:active{
+    transform: scale(0.95);
 }
 
-.prioMid{
-    background-color: orange;
+button.openDialogBtn > i:hover{
+    color: var(--color-accent);
 }
 
-.prioLow{
-    background-color: green;
+.editTaskBtn, .removeTaskBtn, .editProjBtn, .removeProjBtn{
+    background-color: transparent;
+    color:var(--color-gray);
 }
+
+i {
+    background-color: transparent;
+    color: var(--color-icon);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+i:hover, button#sort:hover, button#sort:hover > *{
+    color: var(--color-icon-hover);
+}
+
+
+
