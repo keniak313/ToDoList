@@ -14,6 +14,9 @@ dialog{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 5fr;
     border-radius: 20px;
+    margin: 20px;
+    box-shadow: var(--color-shadow) 0px 0px 20px;
+    transition: 0.3s allow-discrete;
 }
 
 .dialogContent{
@@ -27,6 +30,12 @@ dialog{
     border-bottom-right-radius: 1rem;
 }
 
+@starting-style{
+    .dialogBox{
+        transform: scale(0);
+    }
+}
+
 .tabLeft, .tabRight, .dialogContent{
     background-color: white;
     padding: 1rem;
@@ -37,6 +46,8 @@ dialog{
     justify-content: center;
     align-items: center;
     background-color: rgb(230, 230, 230);
+    cursor: pointer;
+    transition: 0.4s;
 }
 
 .tabLeft{
@@ -60,6 +71,7 @@ dialog{
     grid-column: 1 / 3;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    cursor: auto;
 }
 
 
@@ -90,6 +102,7 @@ label{
     border-style: solid;
     border-width: 0.2rem;
     border-radius: 0.2rem;
+    text-transform: uppercase;
 }
 
 input[type="radio"]{
@@ -103,6 +116,7 @@ input:checked + label{
 
 label.priorityLow{
     border-color: var(--color-green);
+    cursor: pointer;
 }
 
 input:checked + label.priorityLow{
@@ -111,6 +125,7 @@ input:checked + label.priorityLow{
 
 label.priorityMid{
     border-color: var(--color-orange);
+    cursor: pointer;
 }
 
 input:checked + label.priorityMid{
@@ -119,6 +134,7 @@ input:checked + label.priorityMid{
 
 label.priorityHigh{
     border-color: var(--color-red);
+    cursor: pointer;
 }
 
 input:checked + label.priorityHigh{
@@ -131,7 +147,7 @@ input{
 }
 
 input[type="text"]{
-    box-shadow: black 0px 2px;
+    box-shadow: var(--color-shadow) 0px 2px;
 }
 
 input[type="datetime-local"]{

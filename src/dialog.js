@@ -326,7 +326,7 @@ function createTaskForm(){
     dropdown.placeholder = "Projects";
 
     form.appendChild(createInput("text", "title", "Title", dialogType[0]));
-    form.appendChild(createInput("text", "description", "Description", dialogType[0]));
+    form.appendChild(createInput("text", "description", "Description", dialogType[0], false));
     form.appendChild(createInput("datetime-local", "duedate", "DueDate", dialogType[0]));
     form.appendChild(dropdown);
     form.appendChild(createPriorityBox());

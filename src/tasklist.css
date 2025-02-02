@@ -1,16 +1,28 @@
 
 .taskCard{
     display: grid;
-    grid-template-columns: 30px 8fr 4fr;
+    grid-template-columns: 30px 8fr 4fr 50px;
     grid-template-rows: 30px 1fr 30px;
     justify-content: start;
     align-items: start;
     min-width: 200px;
-    max-height: 100px;
     box-shadow: inset var(--color-gray) 0px -2px;
     padding-right: 10px;
     transition: 0.7s;
-    
+}
+
+
+.taskClickArea{
+    display: block;
+    transform: translateX(10px);
+    width: 90%;
+    height: 100%;
+    grid-row: 1 / 4;
+    grid-column: 2 / 4;
+}
+
+.taskCard:active{
+    transform: scale(0.98);
 }
 
 .taskDesc{
@@ -18,21 +30,39 @@
     overflow: hidden;
     text-wrap: nowrap;
     font-size: 0.8rem;
-    transition: 0.5s;
+    transition: 0.5s allow-discrete;
     color: var(--color-dark-gray);
 }
 
 .taskCard:hover{
-    .taskDesc{
-        font-size: 1.2rem;
-        padding-bottom: 10px;
-        /* text-wrap: wrap; */
-        /* overflow: auto; */
-    };
+    background-color: var(--color-gray);
+    /* grid-template-rows: 40px 1fr 30px; */
 }
 
-.taskCard:hover{
+.taskCardActive{
     grid-template-rows: 40px 1fr 30px;
+    .taskDesc{
+        font-size: 1.2rem !important;
+        text-wrap: wrap;
+        overflow: visible;
+    }
+}
+
+.completed{
+    opacity: 0.5;
+    .taskDesc{
+        font-size: 0.5rem;
+    }
+}
+
+.completedAnim{
+    animation: taskComplete 0.6s ease-out;
+}
+
+@keyframes taskComplete {
+    100%{
+        opacity: 0;
+    }
 }
 
 .taskProject{
@@ -49,21 +79,48 @@
     padding-top: 10px;
     width: 100%;
     height: 100%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0rem;
 }
 
 input[type="checkbox"]{
-    /* appearance: none; */
-    border-style: none;
-    color: red;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 0.2rem;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before{
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
     background-color: var(--color-white);
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
+    clip-path: polygon(10% 53%, 40% 63%, 92% 0, 100% 14%, 46% 100%, 0 67%);
+    outline: none;
+}
+
+input[type="checkbox"]:checked{
+    /* background-color: transparent; */
+    transition: 200ms;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
 }
 
 .taskProject{
     text-align: end;
-    grid-column: 3 / 4;
+    grid-column: 3 / 5;
     grid-row: 1 / 2;
 }
 
@@ -78,7 +135,7 @@ input[type="checkbox"]{
 }
 
 .taskDesc{
-    grid-column: 2 / 3;
+    grid-column: 2 / 5;
     grid-row: 2 / 3;
 }
 
@@ -94,7 +151,7 @@ input[type="checkbox"]{
 
 .taskButtons{
     text-align: end;
-    grid-column: 3 / 4;
+    grid-column: 4 / 5;
     grid-row: 3 / 4;
 }
 
@@ -108,8 +165,4 @@ input[type="checkbox"]{
 
 .prioLow{
     background-color: var(--color-green);
-}
-
-.completed{
-    opacity: 0.5;
 }

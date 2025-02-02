@@ -7,58 +7,34 @@
     <script src="https://kit.fontawesome.com/42352751c9.js" crossorigin="anonymous"></script>
 </head>
 <body style="display:none">
-    <!-- <dialog class="dialog">
-        <div class="dialogBox">
-            <form method="dialog" id="dialogForm">
-                <div class="inputBox">
-                    <input type="text" name="title" title="title" placeholder="Title" required>
-                </div>
-                <div class="inputBox">
-                    <input type="text" name="description" title="description" placeholder="Description" required>
-                </div>
-                <div class="inputBox">
-                    <label for="duedate">Due Date:</label>
-                    <input type="datetime-local" name="duedate" title="duedate" required>
-                </div>
-                <div class="inputBox">
-                    <div>Priority: </div>
-                    <div class="prioBox">
-                        <label for="priorityLow">Low</label>
-                        <input type="radio" class="btnPrioLow" name="priority" title="priorityLow" data-id="1">
-                        <label for="priorityLow">Medium</label>
-                        <input type="radio" class="btnPrioMed" name="priority" title="priorityMedium" data-id="2" checked>
-                        <label for="priorityLow">High</label>
-                        <input type="radio" class="btnPrioHigh" name="priority" title="priorityHigh" data-id="3">
-                    </div>
-                </div>
-            </form>
-            <button type="submit" class="submitBtn" form="dialogForm">Submit</button>
-            <button type="submit" class="confirmBtn" form="dialogForm">Confirm</button>
-        </div>
-    </dialog> -->
     <content>
         <div class="sideMenu">
             <button class="openDialogBtn"><i class="fa-solid fa-circle-plus"></i> New</button>
             <div class="categories">
-                <div id="filter" class="inboxBtn" data-filter="inbox">All</div>
-                <div id="filter" class="todayBtn" data-filter="today">Today</div>
-                <div id="filter" class="completedBtn" data-filter="completed">Completed</div>
+                <div id="filter" class="inboxBtn" data-filter="inbox"><i class="fa-solid fa-list-check"></i> All</div>
+                <div id="filter" class="todayBtn" data-filter="today"><i class="fa-solid fa-calendar-day"></i> Today</div>
+                <div id="filter" class="completedBtn" data-filter="completed"><i class="fa-regular fa-square-check"></i> Completed</div>
             </div>
             <div class="projects">
-                <div class="projectsTitle">Projects</div>
+                <div class="projectsTitle"><i class="fa-regular fa-calendar"></i> Projects</div>
                 <div class="projectsList">
                 </div>
             </div>  
         </div>
-        <div class="sortNav">
-            <button id="sort" class="prioDesc" data-sort="prioDesc">Priority <i class="fa-solid fa-arrow-down"></i></button>
-            <button id="sort" class="prioAsc" data-sort="prioAsc">Priority <i class="fa-solid fa-arrow-up"></i></button>
-            <button id="sort" class="dateDesc" data-sort="dateDesc">Date <i class="fa-solid fa-arrow-down"></i></button>
-            <button id="sort" class="dateAsc" data-sort="dateAsc">Date <i class="fa-solid fa-arrow-up"></i></button>
+        <div class="mainContent">
+            <div class="navBtnHolder">
+                <div class="navButton"><i class="fa-solid fa-bars"></i></div>
+            </div>
+            <div class="sortNav">
+                <button id="sort" class="prioDesc" data-sort="prioDesc">Priority <i class="fa-solid fa-arrow-down"></i></button>
+                <button id="sort" class="prioAsc" data-sort="prioAsc">Priority <i class="fa-solid fa-arrow-up"></i></button>
+                <button id="sort" class="dateDesc" data-sort="dateDesc">Date <i class="fa-solid fa-arrow-down"></i></button>
+                <button id="sort" class="dateAsc" data-sort="dateAsc">Date <i class="fa-solid fa-arrow-up"></i></button>
+            </div>
+            <div class="activeProject" data-project="">NAME HERE</div>
+            <div class="activeDesc" data-project=""></div>
+            <div class="taskList"></div>
         </div>
-        <div class="activeProject" data-project="">NAME HERE</div>
-        <div class="activeDesc" data-project=""></div>
-        <div class="taskList"></div>
     </content>
 </body>
 </html>

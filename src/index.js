@@ -13,6 +13,8 @@ document.body.style.display = 'flex';
 const sortOptions = ["prioDesc", "prioAsc", "dateAsc", "dateDesc"]
 let curSorting = sortOptions[0];
 
+export const timer = ms => new Promise(res => setTimeout(res, ms));
+
 export let projects = [];
 export let tasks = [];
 
@@ -34,6 +36,18 @@ new Project("Some Project", "Jakis Opis");
 
 //Functions
 function inputEventHandler(){
+    //Mobile side menu
+    const navButton = document.querySelector(".navButton");
+    const sideMenu = document.querySelector(".sideMenu");
+    navButton.addEventListener("click", () => {
+        console.log("BZZ")
+        sideMenu.classList.toggle("sideMenuShown");
+    });
+
+    window.addEventListener("resize", () =>{
+        sideMenu.classList.remove("sideMenuShown");
+    });
+
     //Side Menu Main filters
     const filterBtns = document.querySelectorAll("#filter");
     filterBtns.forEach((i) =>{
@@ -220,3 +234,4 @@ checkStorage();
 updateSorting();
 populateProjectList(projects)
 inputEventHandler();
+filerTasks().inbox();

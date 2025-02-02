@@ -5,20 +5,29 @@ const inboxBtn = document.querySelector(".inboxBtn");
 const todayBtn = document.querySelector(".todayBtn");
 const completedBtn = document.querySelector(".completedBtn");
 
-export let currentFilter = "inbox";
+export let currentFilter = "";
 
 
 
 setActive();
 
-export function filerTasks() {
+export function filerTasks(filter = "") {
+    if (filter === ""){
+        currentFilter = "";
+        inbox();
+    };
     function inbox() {
         if (currentFilter != "inbox") {
             currentFilter = "inbox";
             tasks.forEach((t) => {
-                t.taskCard.classList.remove("hidden");
+                if(!t.completed){
+                    t.taskCard.classList.remove("hidden");
+                }else{
+                    t.taskCard.classList.add("hidden");
+                }
             });
             setActive();
+            setActiveDesc();
         } else {
             console.log("Nothing to do");
         }
@@ -27,13 +36,14 @@ export function filerTasks() {
         if (currentFilter != "today") {
             currentFilter = "today";
             tasks.forEach((t) => {
-                if (!t.today) {
+                if (!t.today || t.completed) {
                     t.taskCard.classList.add("hidden");
                 } else {
                     t.taskCard.classList.remove("hidden");
                 }
             });
             setActive();
+            setActiveDesc();
         } else {
             console.log("Nothing to do");
         }
@@ -49,6 +59,7 @@ export function filerTasks() {
                 }
             });
             setActive();
+            setActiveDesc();
         } else {
             console.log("Nothing to do");
         }
@@ -95,11 +106,14 @@ function setActiveName (text){
     
 }
 
-function setActiveDesc (project){
+function setActiveDesc (project = ""){
     const activeDesc = document.querySelector(".activeDesc");
     projects.forEach((p) =>{
         if(p.title === project){
             activeDesc.textContent = p.description;
+        }else{
+            activeDesc.textContent = "";
         }
     })
 }
+

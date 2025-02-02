@@ -1,7 +1,8 @@
 import { compareAsc, compareDesc, format, toDate, parse, isToday } from "date-fns";
-import { removeAllChildNodes } from "./index.js";
+import { removeAllChildNodes, timer } from "./index.js";
 import { dialogFunc } from "./dialog.js";
 import { tasks, projects, updateStorage } from "./index.js";
+import { filerTasks, currentFilter } from "./sidemenu.js";
 
 export const taskList = document.querySelector(".taskList");
 
@@ -17,6 +18,9 @@ export function createTaskCard(title, desc, date, prio, id, today, tomorrow, yes
     taskCard.dataset.today = today;
     taskCard.dataset.completed = completed;
     taskCard.dataset.project = project;
+
+    const taskClickArea = document.createElement("div");
+    taskClickArea.classList.add("taskClickArea");
 
     const taskTitle = document.createElement("div");
     taskTitle.textContent = title;
@@ -71,13 +75,13 @@ export function createTaskCard(title, desc, date, prio, id, today, tomorrow, yes
 
     switch (prio){
         case "3":
-            checkboxHolder.classList.add("prioHigh");
+            completeCheckbox.classList.add("prioHigh");
             break
         case "2":
-            checkboxHolder.classList.add("prioMid");
+            completeCheckbox.classList.add("prioMid");
             break
         case "1":
-            checkboxHolder.classList.add("prioLow");
+            completeCheckbox.classList.add("prioLow");
             break
     }
 
@@ -87,6 +91,7 @@ export function createTaskCard(title, desc, date, prio, id, today, tomorrow, yes
     taskCard.appendChild(taskProject);
     taskCard.appendChild(checkboxHolder);
     taskCard.appendChild(taskButtons);
+    taskCard.appendChild(taskClickArea);
     taskList.appendChild(taskCard);
 
     editTaskBtn.addEventListener("click", () =>{
@@ -99,6 +104,25 @@ export function createTaskCard(title, desc, date, prio, id, today, tomorrow, yes
 
     completeCheckbox.addEventListener("click", () =>{
         task.markComplete();
+        console.log(currentFilter)
+        if(currentFilter === "inbox" || currentFilter === "today" || currentFilter === "completed"){
+            taskCard.classList.add("completedAnim");
+        }
+    })
+
+    taskCard.addEventListener("animationend", () =>{
+        taskCard.classList.add("hidden");
+        taskCard.classList.remove("completedAnim");
+    })
+
+    taskClickArea.addEventListener("click", () =>{
+        if(taskCard.classList.contains("taskCardActive")){
+            taskCard.classList.remove("taskCardActive");
+        }else{
+            if(taskDesc.textContent != ""){
+                taskCard.classList.add("taskCardActive");
+            }
+        }
     })
 
     taskCard.addEventListener("mouseenter", () => {
@@ -114,6 +138,7 @@ export function createTaskCard(title, desc, date, prio, id, today, tomorrow, yes
     taskCard.addEventListener("mouseleave", () => {
         editTaskBtn.hidden = true;
         removeTaskBtn.hidden = true;
+        taskCard.classList.remove("taskCardActive");
         //taskDesc.classList.add("itemSmaller");
         //taskCard.classList.add("taskCardMin");
     });
@@ -139,4 +164,5 @@ export function populateTaskList(arr = []){
         i.taskCard = createTaskCard(i.title, i.description, i.dueDate, i.priority, arr.indexOf(i), i.today, i.tomorrow, i.yesterday, i.completed, i.project, i);
     });
     updateStorage("tasks");
+    filerTasks().inbox();
 };

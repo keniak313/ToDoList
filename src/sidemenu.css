@@ -1,30 +1,32 @@
-.projectsTitle{
+.projectsTitle, .projectsTitle>i{
     padding-top: 1.5rem;
     padding-bottom: 0.2rem;
     font-weight: 100;
     font-size: 1.4rem;
-
+    color: var(--color-dark-gray);
 }
 
 #filter{
-    font-size: 1rem;
+    font-size: 0.8rem;
     transition: 0.2s allow-discrete;
+    padding-bottom: 0.2rem;
 }
 
-#filter.active{
+#filter.active, #filter.active>i{
     color: var(--color-black);
     text-decoration: underline;
-    font-weight: 700;
-    font-size: 1.4rem;
+    font-weight: 600;
+    font-size: 1rem;
 }
 
-#filter:hover{
-    font-size: 1.4rem;
+#filter:hover, #filter:hover>i{
+    color: var(--color-black);
+    font-size: 1rem;
     cursor: pointer;
 }
 
 .projectCard:hover > .projectText > .projectTitle{
-    font-size: 1.4rem !important;
+    font-size: 1rem !important;
 }
 
 
